@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+HotBall/Library/
+HotBall/Temp/
+HotBall/obj/
