@@ -8,7 +8,7 @@ public class BallMove : MonoBehaviour
     private float _speedNormal, _speedMetal, _speedPlastic;
     private float _speed;
     private Vector3 _direction = Vector3.down;
-    private Vector3 _startTouchPos, _currentTouchPos;
+    private Vector3 _startTouchPos, _currentTouchPos,_directionCurrent;
 
     void Start()
     {
@@ -28,22 +28,26 @@ public class BallMove : MonoBehaviour
             {
                 _currentTouchPos = touch.position;
 
-                _direction.x = (_currentTouchPos - _startTouchPos).x / 40;
-                if (Mathf.Abs(_direction.x) > 1)
+                _directionCurrent.x = (_currentTouchPos - _startTouchPos).x / 40;
+                if (Mathf.Abs(_directionCurrent.x) > 1)
                 {
-                    int diferens = _direction.x > 0 ? 1 : -1;
-                    _direction.x = 1 * diferens;
+                    int diferens = _directionCurrent.x > 0 ? 1 : -1;
+                    _directionCurrent.x = 1 * diferens;
                 }
             }
         }
         else
         {
-            _direction = Vector3.down;
+            _directionCurrent = Vector3.down;
         }
 
     }
     void FixedUpdate()
     {
+        if (_direction!=_directionCurrent)
+        {
+            _direction = Vector3.Slerp(_direction, _directionCurrent, 0.5f);
+        }
         transform.Translate(_direction * _speed);
     }
     public Vector2 GetDirectionMove()
