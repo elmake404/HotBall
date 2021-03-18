@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BallMove : MonoBehaviour
 {
-    [SerializeField]
-    private float _speedNormal, _speedMetal, _speedPlastic;
-    private float _speed;
     private Vector3 _direction = Vector3.down;
-    private Vector3 _startTouchPos, _currentTouchPos,_directionCurrent;
+    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent;
+    private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
+
+    [SerializeField]
+    private float _speed;
+
 
     void Start()
     {
-        _speed = _speedNormal;
+
     }
     private void Update()
     {
@@ -44,14 +46,43 @@ public class BallMove : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (_direction!=_directionCurrent)
+        if (_direction != _directionCurrent)
         {
             _direction = Vector3.Slerp(_direction, _directionCurrent, 0.5f);
         }
-        transform.Translate(_direction * _speed);
+        transform.Translate(_direction * (_speed - SpeedPenalty()));
+    }
+    private float SpeedPenalty()
+    {
+        float speedPenaltyProcent = 0;
+        for (int i = 0; i < _materialCharacteristics.Count; i++)
+        {
+            if (speedPenaltyProcent< _materialCharacteristics[i].SpeedPenalty)
+            {
+                speedPenaltyProcent = _materialCharacteristics[i].SpeedPenalty;
+            }
+        }
+        return (_speed / 100) * speedPenaltyProcent;
     }
     public Vector2 GetDirectionMove()
     {
         return _direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
+        if (materialCharacteristics!=null)
+        {
+            _materialCharacteristics.Add(materialCharacteristics);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+       var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
+        if (materialCharacteristics!=null)
+        {
+            _materialCharacteristics.Remove(materialCharacteristics);
+        }
     }
 }

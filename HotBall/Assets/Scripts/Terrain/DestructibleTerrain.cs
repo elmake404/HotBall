@@ -162,4 +162,11 @@ public class DestructibleTerrain : MonoBehaviour
             }
         }      
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position+ new Vector3(_resolutionX / 2, _resolutionY / 2,0), new Vector2(_resolutionX, _resolutionY));
+    }
+    
 }

@@ -42,17 +42,18 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
 
     [SerializeField]
     private BallMove _ballMove;
-    [SerializeField]
-    private DestructibleTerrain terrain;
+    private List<DestructibleTerrain> _terrains = new List<DestructibleTerrain>();
     [SerializeField]
     private float diameter = 1.2f, radius = 1.2f, _burnThroughPower;
     [SerializeField]
     private int segmentCount = 10;
     [SerializeField]
-    private Vector3 _offSet { 
-        get {
-            return _ballMove.GetDirectionMove().normalized * -0.2f; 
-        } 
+    private Vector3 _offSet
+    {
+        get
+        {
+            return _ballMove.GetDirectionMove().normalized * -0.2f;
+        }
     }
 
     private Vector2f currentTouchPoint;
@@ -71,7 +72,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         mainCamera = Camera.main;
 
-        previousTouchPoint = (Vector2)(transform.position + _offSet) - terrain.GetPositionOffset();
     }
 
 
@@ -79,20 +79,40 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         BurningOut();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var terrain = collision.GetComponent<DestructibleTerrain>();
+
+        if (terrain!= null)
+        {
+            _terrains.Add(terrain);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var terrain = collision.GetComponent<DestructibleTerrain>();
+
+        if (terrain!= null)
+        {
+            _terrains.Remove(terrain);
+        }
+    }
 
     private void BurningOut()
     {
         Vector2 ballPosition = transform.position + _offSet;
+        for (int i = 0; i < _terrains.Count; i++)
+        {
+            currentTouchPoint = ballPosition - _terrains[i].GetPositionOffset();
 
-        currentTouchPoint = ballPosition - terrain.GetPositionOffset();
+            BuildVertices(currentTouchPoint);
 
-        BuildVertices(currentTouchPoint);
+            _terrains[i].ExecuteClip(this);
+        }
 
-        terrain.ExecuteClip(this);
+        //BuildVertices(previousTouchPoint, currentTouchPoint);
 
-        BuildVertices(previousTouchPoint, currentTouchPoint);
-
-        previousTouchPoint = currentTouchPoint;
+        //previousTouchPoint = currentTouchPoint;
 
     }
 
@@ -188,6 +208,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position+_offSet, radius);
+        Gizmos.DrawWireSphere(transform.position + _offSet, radius);
     }
 }
