@@ -46,7 +46,7 @@ public class DestructibleTerrain : MonoBehaviour
         _blockSizeScaled = (int64)(_blockSize * VectorEx.float2int64);
 
         _coliderMain.size = new Vector2(_resolutionX, _resolutionY);
-        _coliderMain.offset = new Vector2(_resolutionX/2, _resolutionY/2);
+        _coliderMain.offset = new Vector2((float)_resolutionX /2, (float)_resolutionY /2);
 
         Initialize();
     }
@@ -166,7 +166,7 @@ public class DestructibleTerrain : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position+ new Vector3(_resolutionX / 2, _resolutionY / 2,0), new Vector2(_resolutionX, _resolutionY));
+        Gizmos.DrawWireCube(transform.position+ new Vector3((float)_resolutionX / 2, (float)_resolutionY / 2,0), new Vector2(_resolutionX, _resolutionY));
     }
     
 }

@@ -749,7 +749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballMove: {fileID: 861751344}
-  terrain: {fileID: 1830527979}
   diameter: 1.2
   radius: 0.5
   _burnThroughPower: 0.05
@@ -1291,7 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 86
+  SpeedPenalty: 71.8
 --- !u!61 &1674717510
 BoxCollider2D:
   m_ObjectHideFlags: 0
