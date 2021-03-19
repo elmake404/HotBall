@@ -241,7 +241,7 @@ public class DestructibleBlock : MonoBehaviour
         mesh.RecalculateNormals();
         //mesh.MarkModified();
 
-        //UpdateColliders(edgesList);
+        UpdateColliders(edgesList);
     }
     private void UpdateColliders(List<List<Vector2>> edgesList)
     {
