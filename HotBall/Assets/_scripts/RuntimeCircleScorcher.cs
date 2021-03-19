@@ -43,11 +43,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     [SerializeField]
     private BallMove _ballMove;
     private List<DestructibleTerrain> _terrains = new List<DestructibleTerrain>();
-    [SerializeField]
-    private float diameter = 1.2f, radius = 1.2f, _burnThroughPower;
-    [SerializeField]
-    private int segmentCount = 10;
-    [SerializeField]
     private Vector3 _offSet
     {
         get
@@ -55,25 +50,37 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
             return _ballMove.GetDirectionMove().normalized * -0.2f;
         }
     }
-
     private Vector2f currentTouchPoint;
-
     private Vector2f previousTouchPoint;
-
     private TouchPhase touchPhase;
-
     private TouchLineOverlapCheck touchLine;
-
     private List<Vector2i> vertices = new List<Vector2i>();
-
     private Camera mainCamera;
+
+    [SerializeField]
+    private float diameter = 1.2f, radius = 1.2f, _burnThroughPower, _timeToCoolDown=10;
+    private float _timerToCoolDown;
+    [SerializeField]
+    private int segmentCount = 10;
+    [SerializeField]
+
 
     private void Awake()
     {
+        _timerToCoolDown = _timeToCoolDown;
         mainCamera = Camera.main;
-
     }
-
+    private void FixedUpdate()
+    {
+        if (_timerToCoolDown > 0)
+        {
+            _timerToCoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("Lose " + _timerToCoolDown);
+        }
+    }
 
     private void LateUpdate()
     {
@@ -83,7 +90,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         var terrain = collision.GetComponent<DestructibleTerrain>();
 
-        if (terrain!= null)
+        if (terrain != null)
         {
             _terrains.Add(terrain);
         }
@@ -92,7 +99,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         var terrain = collision.GetComponent<DestructibleTerrain>();
 
-        if (terrain!= null)
+        if (terrain != null)
         {
             _terrains.Remove(terrain);
         }
@@ -109,11 +116,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
 
             _terrains[i].ExecuteClip(this);
         }
-
-        //BuildVertices(previousTouchPoint, currentTouchPoint);
-
-        //previousTouchPoint = currentTouchPoint;
-
     }
 
     private void BuildVertices(Vector2 center)

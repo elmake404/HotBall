@@ -67,4 +67,10 @@ public class AwakeCircleClipper : MonoBehaviour, IClip
             _terrains[i].ExecuteClip(this);
         }
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position , _diameter / 2f);
+    }
+
 }
