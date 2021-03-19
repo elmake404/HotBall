@@ -10,7 +10,7 @@ public class BallMove : MonoBehaviour
 
     [SerializeField]
     private float _speed;
-
+    private bool _isHole;
 
     void Start()
     {
@@ -50,18 +50,23 @@ public class BallMove : MonoBehaviour
         {
             _direction = Vector3.Slerp(_direction, _directionCurrent, 0.5f);
         }
+
         transform.Translate(_direction * (_speed - SpeedPenalty()));
     }
     private float SpeedPenalty()
     {
         float speedPenaltyProcent = 0;
-        for (int i = 0; i < _materialCharacteristics.Count; i++)
+        if (!_isHole)
         {
-            if (speedPenaltyProcent< _materialCharacteristics[i].SpeedPenalty)
+            for (int i = 0; i < _materialCharacteristics.Count; i++)
             {
-                speedPenaltyProcent = _materialCharacteristics[i].SpeedPenalty;
+                if (speedPenaltyProcent < _materialCharacteristics[i].SpeedPenalty)
+                {
+                    speedPenaltyProcent = _materialCharacteristics[i].SpeedPenalty;
+                }
             }
         }
+
         return (_speed / 100) * speedPenaltyProcent;
     }
     public Vector2 GetDirectionMove()
@@ -71,18 +76,27 @@ public class BallMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
-        if (materialCharacteristics!=null)
+        var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
+        if (materialCharacteristics != null)
         {
             _materialCharacteristics.Add(materialCharacteristics);
+        }
+        if (collision.tag =="Hole")
+        {
+            _isHole = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-       var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
-        if (materialCharacteristics!=null)
+        var materialCharacteristics = collision.GetComponent<MaterialCharacteristics>();
+        if (materialCharacteristics != null)
         {
             _materialCharacteristics.Remove(materialCharacteristics);
         }
+        if (collision.tag == "Hole")
+        {
+            _isHole = false;
+        }
+
     }
 }
