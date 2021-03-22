@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2002574611973076316}
   - component: {fileID: 2002574611973076319}
   - component: {fileID: 2002574611973076291}
+  - component: {fileID: 5808818654386227520}
   - component: {fileID: 2002574611973076318}
   - component: {fileID: 2002574611973076317}
   m_Layer: 0
@@ -54,7 +55,6 @@ MonoBehaviour:
   diameter: 1.2
   radius: 0.5
   _burnThroughPower: 0.05
-  _timeToCoolDown: 10
   segmentCount: 10
 --- !u!114 &2002574611973076291
 MonoBehaviour:
@@ -69,6 +69,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.07
+--- !u!114 &5808818654386227520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002574611973076312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd9080dcd9563044b654aa491884cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToCoolDown: 10
 --- !u!58 &2002574611973076318
 CircleCollider2D:
   m_ObjectHideFlags: 0

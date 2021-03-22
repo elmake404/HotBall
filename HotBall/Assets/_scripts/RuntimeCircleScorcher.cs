@@ -58,8 +58,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     private Camera mainCamera;
 
     [SerializeField]
-    private float diameter = 1.2f, radius = 1.2f, _burnThroughPower, _timeToCoolDown=10;
-    private float _timerToCoolDown;
+    private float diameter = 1.2f, radius = 1.2f, _burnThroughPower;
     [SerializeField]
     private int segmentCount = 10;
     [SerializeField]
@@ -67,19 +66,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
 
     private void Awake()
     {
-        _timerToCoolDown = _timeToCoolDown;
         mainCamera = Camera.main;
-    }
-    private void FixedUpdate()
-    {
-        if (_timerToCoolDown > 0)
-        {
-            _timerToCoolDown -= Time.deltaTime;
-        }
-        else
-        {
-            Debug.Log("Lose " + _timerToCoolDown);
-        }
     }
 
     private void LateUpdate()
