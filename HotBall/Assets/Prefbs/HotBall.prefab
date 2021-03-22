@@ -52,9 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballMove: {fileID: 2002574611973076291}
-  diameter: 1.2
-  radius: 0.5
-  _burnThroughPower: 0.05
+  _radius: 0.35
+  _OffsetY: -0.05
   segmentCount: 10
 --- !u!114 &2002574611973076291
 MonoBehaviour:

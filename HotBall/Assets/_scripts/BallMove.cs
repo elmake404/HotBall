@@ -76,10 +76,6 @@ public class BallMove : MonoBehaviour
 
         return (_speed / 100) * speedPenaltyProcent;
     }
-    public Vector2 GetDirectionMove()
-    {
-        return _direction;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -110,4 +106,9 @@ public class BallMove : MonoBehaviour
     {
         return (CanvasManager.IsGameFlow && CanvasManager.IsStartGeme);
     }
+    public Vector2 GetDirectionMove()
+    {
+        return _direction;
+    }
+
 }

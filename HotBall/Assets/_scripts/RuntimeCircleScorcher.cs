@@ -47,7 +47,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         get
         {
-            return _ballMove.GetDirectionMove().normalized * -0.2f;
+            return _ballMove.GetDirectionMove().normalized * _OffsetY;
         }
     }
     private Vector2f currentTouchPoint;
@@ -58,7 +58,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     private Camera mainCamera;
 
     [SerializeField]
-    private float diameter = 1.2f, radius = 1.2f, _burnThroughPower;
+    private float _radius = 1.2f ,_OffsetY = -0.2f;
     [SerializeField]
     private int segmentCount = 10;
     [SerializeField]
@@ -112,7 +112,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
         {
             float angle = Mathf.Deg2Rad * (-90f - 360f / segmentCount * i);
 
-            Vector2 point = new Vector2(center.x + radius * Mathf.Cos(angle), center.y + radius * Mathf.Sin(angle));
+            Vector2 point = new Vector2(center.x + _radius * Mathf.Cos(angle), center.y + _radius * Mathf.Sin(angle));
             Vector2i point_i64 = point.ToVector2i();
             vertices.Add(point_i64);
         }
@@ -127,7 +127,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
         for (int i = 0; i <= halfSegmentCount; i++)
         {
             float angle = Mathf.Deg2Rad * (touchLine.angle + 270f - (float)360f / segmentCount * i);
-            Vector2 point = new Vector2(begin.x + radius * Mathf.Cos(angle), begin.y + radius * Mathf.Sin(angle));
+            Vector2 point = new Vector2(begin.x + _radius * Mathf.Cos(angle), begin.y + _radius * Mathf.Sin(angle));
             Vector2i point_i64 = point.ToVector2i();
             vertices.Add(point_i64);
         }
@@ -135,7 +135,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
         for (int i = halfSegmentCount; i <= segmentCount; i++)
         {
             float angle = Mathf.Deg2Rad * (touchLine.angle + 270f - (float)360f / segmentCount * i);
-            Vector2 point = new Vector2(end.x + radius * Mathf.Cos(angle), end.y + radius * Mathf.Sin(angle));
+            Vector2 point = new Vector2(end.x + _radius * Mathf.Cos(angle), end.y + _radius * Mathf.Sin(angle));
             Vector2i point_i64 = point.ToVector2i();
             vertices.Add(point_i64);
         }
@@ -144,13 +144,13 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         if (touchPhase == TouchPhase.Began)
         {
-            float dx = Mathf.Abs(currentTouchPoint.x - p.x) - radius - size / 2;
-            float dy = Mathf.Abs(currentTouchPoint.y - p.y) - radius - size / 2;
+            float dx = Mathf.Abs(currentTouchPoint.x - p.x) - _radius - size / 2;
+            float dy = Mathf.Abs(currentTouchPoint.y - p.y) - _radius - size / 2;
             return dx < 0f && dy < 0f;
         }
         else if (touchPhase == TouchPhase.Moved)
         {
-            float distance = touchLine.GetDistance(p) - radius - size / touchLine.dividend;
+            float distance = touchLine.GetDistance(p) - _radius - size / touchLine.dividend;
             return distance < 0f;
         }
         else
@@ -162,8 +162,8 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
         {
             return new ClipBounds
             {
-                lowerPoint = new Vector2f(currentTouchPoint.x - radius, currentTouchPoint.y - radius),
-                upperPoint = new Vector2f(currentTouchPoint.x + radius, currentTouchPoint.y + radius)
+                lowerPoint = new Vector2f(currentTouchPoint.x - _radius, currentTouchPoint.y - _radius),
+                upperPoint = new Vector2f(currentTouchPoint.x + _radius, currentTouchPoint.y + _radius)
             };
         }
         else if (touchPhase == TouchPhase.Moved)
@@ -183,8 +183,8 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
 
             return new ClipBounds
             {
-                lowerPoint = new Vector2f(lowerPoint.x - radius, lowerPoint.y - radius),
-                upperPoint = new Vector2f(upperPoint.x + radius, upperPoint.y + radius)
+                lowerPoint = new Vector2f(lowerPoint.x - _radius, lowerPoint.y - _radius),
+                upperPoint = new Vector2f(upperPoint.x + _radius, upperPoint.y + _radius)
             };
         }
         else
@@ -197,6 +197,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position + _offSet, radius);
+        Gizmos.DrawWireSphere(transform.position + _offSet, _radius);
     }
 }
