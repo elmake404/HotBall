@@ -5,16 +5,16 @@ using UnityEngine;
 public class BallMove : MonoBehaviour
 {
     private Vector3 _direction = Vector3.down;
-    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down;
+    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down,_startPosBall;
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
 
     [SerializeField]
-    private float _speed;
+    private float _speed, _limmitHorizontal = 6;
     private bool _isHole;
 
     void Start()
     {
-
+        _startPosBall = transform.position;
     }
     private void Update()
     {
@@ -63,6 +63,7 @@ public class BallMove : MonoBehaviour
             }
 
             transform.Translate(_direction * (_speed - SpeedPenalty()));
+            CorrectionPosition();
         }
     }
     private float SpeedPenalty()
@@ -107,10 +108,31 @@ public class BallMove : MonoBehaviour
         }
 
     }
+    private void CorrectionPosition()
+    {
+        Vector3 PosCorrection = transform.position;
+
+        if (PosCorrection.x >_startPosBall.x+_limmitHorizontal)
+        {
+            PosCorrection.x = _startPosBall.x + _limmitHorizontal;
+        }
+        else if (PosCorrection.x < _startPosBall.x - _limmitHorizontal)
+        {
+            PosCorrection.x = _startPosBall.x - _limmitHorizontal;
+        }
+        transform.position = PosCorrection;
+    }
+
     private bool Move()
     {
         return (CanvasManager.IsGameFlow && CanvasManager.IsStartGeme);
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position - new Vector3(_limmitHorizontal, 0, 0), transform.position + new Vector3(_limmitHorizontal, 0, 0));
+    }
+
     public Vector2 GetDirectionMove()
     {
         return _direction;
