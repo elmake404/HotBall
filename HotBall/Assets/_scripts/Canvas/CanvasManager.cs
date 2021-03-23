@@ -10,9 +10,14 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _menuUI, _inGameUI, _wimIU, _lostUI;
+    private CameraMoveControl _cameraMove;
+    [SerializeField]
+    private float _delayBeforeStart = 1.3f;
+    
 
     private void Awake()
     {
+        _cameraMove = FindObjectOfType<CameraMoveControl>();
         IsWinGame = false;
         IsLoseGame = false;
     }
@@ -46,4 +51,15 @@ public class CanvasManager : MonoBehaviour
             _lostUI.SetActive(true);
         }
     }
+    private IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(_delayBeforeStart);
+        IsGameFlow = true;
+    }
+    public void BeginningGame()
+    {
+        _cameraMove.StartMoveCamera(_delayBeforeStart);
+        StartCoroutine(StartGame());
+    }
+
 }

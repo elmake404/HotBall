@@ -5,26 +5,27 @@ using UnityEngine;
 public class CameraMoveControl : MonoBehaviour
 {
     [SerializeField]
-    private Transform _target;
-    private Vector3 _ofset, _velocity;
+    private Transform _target, _startPosCamera;
+    [SerializeField]
+    private Vector3 _ofset, _velocity, _gamePosCamera;
 
     [SerializeField]
     private float _speedMove;
-    private float _timeAnimation;
 
-    private void Start()
+    private void Awake()
     {
-        _timeAnimation = 1.3f;
         _ofset = transform.position - _target.position;
+        _gamePosCamera = transform.position;
+        transform.position = _startPosCamera.position;
     }
 
 
     private void FixedUpdate()
     {
-        if (CanvasManager.IsStartGeme && !CanvasManager.IsGameFlow)
-        {
-            StartAnimation();
-        }
+        //if (CanvasManager.IsStartGeme && !CanvasManager.IsGameFlow)
+        //{
+        //    StartAnimation();
+        //}
 
         if (CanvasManager.IsGameFlow && CanvasManager.IsStartGeme)
         {
@@ -37,13 +38,24 @@ public class CameraMoveControl : MonoBehaviour
         currentPosCamera.y = (_target.position + _ofset).y;
         return Vector3.SmoothDamp(transform.position, currentPosCamera, ref _velocity, _speedMove);
     }
-    private IEnumerator StartGame()
+    private IEnumerator GoToGamePosCamera(float travelTime)
     {
-        yield return new WaitForSeconds(_timeAnimation);
-        CanvasManager.IsGameFlow = true;
+        float _speed = (transform.position - _gamePosCamera).magnitude / (travelTime * 60);
+        Debug.Log((transform.position - _gamePosCamera).magnitude);
+        Debug.Log(travelTime);
+        Debug.Log(_speed);
+        while (true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _gamePosCamera, _speed);
+            if ((transform.position - _gamePosCamera).magnitude <= 0.05f || CanvasManager.IsGameFlow)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
+        }
     }
-    private void StartAnimation()
+    public void StartMoveCamera(float travelTime)
     {
-        StartCoroutine(StartGame());
+        StartCoroutine(GoToGamePosCamera(travelTime));
     }
 }

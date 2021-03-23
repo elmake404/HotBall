@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            transform.parent.GetComponent<CanvasManager>().BeginningGame();
             CanvasManager.IsStartGeme = true;
             gameObject.SetActive(false);
         }

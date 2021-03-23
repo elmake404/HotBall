@@ -14,13 +14,16 @@ public class BallLife : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_timerToCoolDown > 0)
+        if (CanvasManager.IsGameFlow)
         {
-            _timerToCoolDown -= Time.deltaTime;
-        }
-        else
-        {
-            Debug.Log("Lose " + _timerToCoolDown);
+            if (_timerToCoolDown > 0)
+            {
+                _timerToCoolDown -= Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Lose " + _timerToCoolDown);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
