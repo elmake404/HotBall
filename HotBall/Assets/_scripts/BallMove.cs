@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallMove : MonoBehaviour
 {
+    //[SerializeField]
     private Vector3 _direction = Vector3.down;
     private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent;
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
@@ -30,6 +31,11 @@ public class BallMove : MonoBehaviour
                 }
                 else if (touch.phase == TouchPhase.Moved)
                 {
+                    if (_startTouchPos==Vector3.zero)
+                    {
+                        _startTouchPos = touch.position;
+                    }
+
                     _currentTouchPos = touch.position;
 
                     _directionCurrent.x = (_currentTouchPos - _startTouchPos).x / 40;

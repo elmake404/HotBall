@@ -19,7 +19,8 @@ public class Burner : MonoBehaviour
     {
         yield return new WaitForSeconds(_animation.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         //Debug.Log(_animation.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-        Destroy(_animation);
+        //Destroy(_animation);
+        gameObject.SetActive(false);
         CanvasManager.IsGameFlow = true;
     }
 

@@ -8831,7 +8831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 9b8d8e7dfcde3bb4ba65c60391b435d8, type: 2}
   _coliderMain: {fileID: 1830527981}
-  _blockSize: 0.5
+  _blockSize: 1
   _simplifyEpsilonPercent: 0
   _resolutionX: 10
   _resolutionY: 28

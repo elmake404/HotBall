@@ -6,10 +6,8 @@ public class CameraMoveControl : MonoBehaviour
 {
     [SerializeField]
     private Transform _target, _startPosCamera;
-    [SerializeField]
     private Vector3 _ofset, _velocity, _gamePosCamera;
 
-    [SerializeField]
     private float _speedMove;
 
     private void Awake()
@@ -40,10 +38,7 @@ public class CameraMoveControl : MonoBehaviour
     }
     private IEnumerator GoToGamePosCamera(float travelTime)
     {
-        float _speed = (transform.position - _gamePosCamera).magnitude / (travelTime * 60);
-        Debug.Log((transform.position - _gamePosCamera).magnitude);
-        Debug.Log(travelTime);
-        Debug.Log(_speed);
+        float _speed = (transform.position - _gamePosCamera).magnitude * (travelTime * Time.fixedDeltaTime);
         while (true)
         {
             transform.position = Vector3.MoveTowards(transform.position, _gamePosCamera, _speed);
