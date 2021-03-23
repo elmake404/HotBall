@@ -888,6 +888,7 @@ MonoBehaviour:
   _inGameUI: {fileID: 1777170646809218}
   _wimIU: {fileID: 1326874676435430}
   _lostUI: {fileID: 1401342752598832}
+  _delayBeforeStart: 1.3
 --- !u!1 &1168849908791638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1790,7 @@ GameObject:
   - component: {fileID: 224122912994055248}
   - component: {fileID: 222073396449890134}
   - component: {fileID: 114079143025664714}
+  - component: {fileID: 6372418586428149457}
   m_Layer: 5
   m_Name: WinUI
   m_TagString: Untagged
@@ -1855,6 +1857,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6372418586428149457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326874676435430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a07a8b1bbb78b140a51ea40024bbd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1334389028630384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2460,7 @@ GameObject:
   - component: {fileID: 224358153135785456}
   - component: {fileID: 222574322450402594}
   - component: {fileID: 114357530374569584}
+  - component: {fileID: 3150000328807416343}
   m_Layer: 5
   m_Name: LostUI
   m_TagString: Untagged
@@ -2512,6 +2527,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3150000328807416343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401342752598832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a07a8b1bbb78b140a51ea40024bbd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1414646230702184
 GameObject:
   m_ObjectHideFlags: 0

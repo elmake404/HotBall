@@ -8,6 +8,7 @@ public class CameraMoveControl : MonoBehaviour
     private Transform _target, _startPosCamera;
     private Vector3 _ofset, _velocity, _gamePosCamera;
 
+    [SerializeField]
     private float _speedMove;
 
     private void Awake()

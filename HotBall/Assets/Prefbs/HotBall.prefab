@@ -80,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd9080dcd9563044b654aa491884cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coldMaterial: {fileID: 2100000, guid: 48bfd785517d9b049b2f8e472c5c9a5b, type: 2}
+  _mesh: {fileID: 2002574612367908621}
+  _light: {fileID: 1962903463607063774}
   _timeToCoolDown: 10
 --- !u!58 &2002574611973076318
 CircleCollider2D:

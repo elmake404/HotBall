@@ -29,7 +29,7 @@ public class CanvasManager : MonoBehaviour
         }
         else
         {
-            IsGameFlow = true;
+            BeginningGame();
         }
     }
 
