@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ice
-  m_Shader: {fileID: 4800000, guid: b5fb7cbf5f5654dedaf7fe28e8302008, type: 3}
+  m_Shader: {fileID: 4800000, guid: c57b2d96c82bf442185a1c640dd5368d, type: 3}
   m_ShaderKeywords: _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: aa701e5be2dbcd24aad4fb9c3ca284da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -65,7 +65,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Fresnel_power: 8.47
+    - _Fresnel_power: 0.35
     - _GlobalLightIntensity: 1
     - _GlossMapScale: 0.334
     - _Glossiness: 0.5
