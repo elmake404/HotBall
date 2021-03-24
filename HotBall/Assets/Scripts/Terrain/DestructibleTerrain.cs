@@ -11,7 +11,14 @@ public class DestructibleTerrain : MonoBehaviour
     private Material _material;
     [SerializeField]
     private BoxCollider2D _coliderMain;
+    [SerializeField]
+    private Color _colorGizmo = Color.blue;
 
+    [SerializeField]
+    private bool _thermalInfluence;
+    [SerializeField]
+    [Range(-100, 100)]
+    private float _percentageOfThermalInFluence;
     [SerializeField]
     [Range(0.5f, 1.0f)]
     private float _blockSize;
@@ -53,6 +60,7 @@ public class DestructibleTerrain : MonoBehaviour
 
     public void Initialize()
     {
+        //
         _blocks = new DestructibleBlock[_resolutionX * _resolutionY];
 
         for (int x = 0; x < _resolutionX; x++)
@@ -77,6 +85,8 @@ public class DestructibleTerrain : MonoBehaviour
                 UpdateBlockBounds(x, y);
 
                 block.UpdateGeometryWithMoreVertices(polygons, _width, _height, _depth);
+                if(_thermalInfluence)
+                block.gameObject.AddComponent<Liquid>().Initialization(_percentageOfThermalInFluence);
             }
         }
     }
@@ -163,9 +173,9 @@ public class DestructibleTerrain : MonoBehaviour
         }      
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = _colorGizmo;
         Gizmos.DrawWireCube(transform.position+ (new Vector3((float)_resolutionX / 2, (float)_resolutionY / 2,0)*_blockSize), new Vector2(_resolutionX, _resolutionY) * _blockSize);
     }
     

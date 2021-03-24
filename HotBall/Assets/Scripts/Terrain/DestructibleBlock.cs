@@ -36,101 +36,6 @@ public class DestructibleBlock : MonoBehaviour
         meshRenderer.material = material;
     }
 
-    //public void UpdateGemetry(List<List<Vector2i>> inPolygons, float depth)
-    //{      
-    //    if (polygons != null)
-    //        polygons.Clear();
-    //    else
-    //        polygons = new List<List<Vector2i>>();
-    
-    //    List<List<Vector2>> edgesList = new List<List<Vector2f>>();
-
-    //    int totalVertexCount = 0;
-    //    int edgeTriangleIndexCount = 0;
-
-    //    for (int i = 0; i < inPolygons.Count; i++)
-    //    {
-    //        Vector2i[] simplifiedPolygon = BlockSimplification.Execute(inPolygons[i], edgesList);
-    //        if (simplifiedPolygon != null)
-    //        {
-    //            polygons.Add(new List<Vector2i>(simplifiedPolygon));
-
-    //            totalVertexCount += simplifiedPolygon.Length;
-    //        }
-    //    }
-
-    //    for (int i = 0; i < edgesList.Count; i++)
-    //    {
-    //        int vertexCount = edgesList[i].Count;
-    //        totalVertexCount += vertexCount * 2;
-    //        edgeTriangleIndexCount += (vertexCount - 1) * 6;
-    //    }
-
-    //    Vector3[] vertices = new Vector3[totalVertexCount];
-    //    List<int> triangles = new List<int>();
-    //    int[] edgeTriangles = new int[edgeTriangleIndexCount];
-
-    //    int vertexIndex = 0;
-    //    int vertexOffset = 0;
-
-    //    for (int i = 0; i < polygons.Count; i++)
-    //    {
-    //        List<Vector2i> polygon = polygons[i];
-    //        int vertexCount = polygon.Count;
-
-    //        for (int j = vertexCount - 1; j >= 0; j--)
-    //        {
-    //            vertices[vertexIndex] = polygon[j].ToVector3f();
-    //            vertexIndex++;
-    //        }
-
-    //        Triangulate.Execute(vertices, vertexOffset, vertexOffset + vertexCount, triangles);
-    //        vertexOffset += vertexCount;
-    //    }
-
-    //    int edgeTriangleIndex = 0;
-    //    for (int i = 0; i < edgesList.Count; i++)
-    //    {
-    //        List<Vector2f> edgePoints = edgesList[i];
-    //        int vertexCount = edgePoints.Count;
-    //        Vector3 point;
-    //        for (int j = 0; j < vertexCount - 1; j++)
-    //        {
-    //            point = edgePoints[j].ToVector3f();
-    //            vertices[vertexIndex] = point;
-    //            point.z += depth;
-    //            vertices[vertexIndex + 1] = point;
-
-    //            edgeTriangles[edgeTriangleIndex + 0] = vertexIndex;
-    //            edgeTriangles[edgeTriangleIndex + 1] = vertexIndex + 2;
-    //            edgeTriangles[edgeTriangleIndex + 2] = vertexIndex + 1;
-
-    //            edgeTriangles[edgeTriangleIndex + 3] = vertexIndex + 2;
-    //            edgeTriangles[edgeTriangleIndex + 4] = vertexIndex + 3;
-    //            edgeTriangles[edgeTriangleIndex + 5] = vertexIndex + 1;
-
-    //            vertexIndex += 2;
-    //            edgeTriangleIndex += 6;
-    //        }
-
-    //        point = edgePoints[vertexCount - 1].ToVector3f();
-    //        vertices[vertexIndex] = point;
-    //        point.z += depth;
-    //        vertices[vertexIndex + 1] = point;
-    //        vertexIndex += 2;
-    //    }
-
-    //    triangles.AddRange(edgeTriangles);
-
-    //    mesh.Clear();
-    //    mesh.vertices = vertices;
-    //    mesh.triangles = triangles.ToArray();
-    //    mesh.RecalculateNormals();
-    //    //mesh.MarkModified();
-
-    //    UpdateColliders(edgesList);  
-    //}
-
     public void UpdateGeometryWithMoreVertices(List<List<Vector2i>> inPolygons, float width, float height, float depth)
     {
         if (polygons != null)
@@ -190,7 +95,7 @@ public class DestructibleBlock : MonoBehaviour
         }
 
         int edgeTriangleIndex = 0;
-        int vertexOnEdgeIndex = vertexIndex;
+        //int vertexOnEdgeIndex = vertexIndex;
         for (int i = 0; i < edgesList.Count; i++)
         {
             List<Vector2f> edgePoints = edgesList[i];

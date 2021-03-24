@@ -54,7 +54,7 @@ public class AwakeCircleClipper : MonoBehaviour, IClip
     void Awake()
     {
         _radius = _diameter / 2f;
-        _collider2D.radius = _radius;
+        _collider2D.radius = _radius-0.2f;
     }
 
     void Start()
@@ -67,7 +67,7 @@ public class AwakeCircleClipper : MonoBehaviour, IClip
             _terrains[i].ExecuteClip(this);
         }
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position , _diameter / 2f);
