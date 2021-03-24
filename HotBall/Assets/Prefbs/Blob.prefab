@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc0ca0988819fa4fa6500bba9a7dd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percentageOfThermalInFluence: -10
+  _percentageOfThermalInFluence: -5
   _steam: {fileID: 2732442487962867910}
 --- !u!1 &2467084841101729843
 GameObject:
