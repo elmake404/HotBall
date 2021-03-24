@@ -55,7 +55,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     private TouchPhase touchPhase;
     private TouchLineOverlapCheck touchLine;
     private List<Vector2i> vertices = new List<Vector2i>();
-    private Camera mainCamera;
+    //private Camera mainCamera;
 
     [SerializeField]
     private float _radius = 1.2f ,_OffsetY = -0.2f;
@@ -66,7 +66,7 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
     }
 
     private void LateUpdate()
@@ -91,7 +91,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
             _terrains.Remove(terrain);
         }
     }
-
     private void BurningOut()
     {
         Vector2 ballPosition = transform.position + _offSet;
@@ -104,7 +103,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
             _terrains[i].ExecuteClip(this);
         }
     }
-
     private void BuildVertices(Vector2 center)
     {
         vertices.Clear();
@@ -117,7 +115,6 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
             vertices.Add(point_i64);
         }
     }
-
     private void BuildVertices(Vector2 begin, Vector2 end)
     {
         vertices.Clear();
