@@ -8,16 +8,20 @@ public class Liquid : MonoBehaviour
     [Range(-100, 100)]
     private float _percentageOfThermalInFluence; public float PercentageOfThermalInFluence
     { get { return _percentageOfThermalInFluence; } }
-    [SerializeField]
-    private ParticleSystem _steam;
+    //[SerializeField]
+    //private ParticleSystem _steam;
     public void Evaporation()
     {
-        if (_steam != null)
-        {
-            _steam.transform.SetParent(null);
-            _steam.Play();
-            Destroy(_steam.gameObject, 1);
-        }
+        //if (_steam != null)
+        //{
+        //    _steam.transform.SetParent(null);
+        //    _steam.Play();
+        //    Destroy(_steam.gameObject, 1);
+        //}
         Destroy(gameObject);
+    }
+    public void Initialization ( float percentageOfThermalInFluence)
+    {
+        _percentageOfThermalInFluence = percentageOfThermalInFluence;
     }
 }

@@ -8,8 +8,11 @@ public class BallLife : MonoBehaviour
     private Material _coldMaterial;
     private Material _mainMaterial;
     private Color _colorCold, _colorHot, _differenceColor;
+    private List<Liquid> _liquidsList = new List<Liquid>();
     [SerializeField]
     private MeshRenderer _mesh;
+    [SerializeField]
+    private ParticleSystem _steem;
     [SerializeField]
     private Light _light;
     [SerializeField]
@@ -28,34 +31,42 @@ public class BallLife : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(_liquidsList.Count>0)
+        {
+            TemperatureRegulator(_liquidsList[0].PercentageOfThermalInFluence);
+            _steem.Play();
+        }
+        else
+        _steem.Stop();
+
         if (CanvasManager.IsGameFlow)
         {
             EffectsControl();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Liquid liquid = collision.collider.GetComponent<Liquid>();
+        Liquid liquid = other.GetComponent<Liquid>();
 
         if (liquid != null)
         {
-            TemperatureRegulator(liquid.PercentageOfThermalInFluence);
-            liquid.Evaporation();
+            _liquidsList.Add(liquid);
         }
 
-        if (collision.collider.tag == "Finish")
+        if (other.tag == "Finish")
         {
             CanvasManager.IsGameFlow = false;
             CanvasManager.IsWinGame = true;
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Finish")
+        Liquid liquid = other.GetComponent<Liquid>();
+
+        if (liquid != null)
         {
-            CanvasManager.IsGameFlow = false;
-            CanvasManager.IsWinGame = true;
+            _liquidsList.Remove(liquid);
         }
     }
     private void EffectsControl()
