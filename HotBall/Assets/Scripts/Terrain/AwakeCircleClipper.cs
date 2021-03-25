@@ -54,7 +54,7 @@ public class AwakeCircleClipper : MonoBehaviour, IClip
     void Awake()
     {
         _radius = _diameter / 2f;
-        _collider2D.radius = _radius;
+        _collider2D.radius = _radius-FindObjectOfType<BallMove>().GetRadius();
     }
 
     void Start()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -11,12 +12,18 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject _menuUI, _inGameUI, _wimIU, _lostUI;
     private CameraMoveControl _cameraMove;
+    private BallLife _ballLife;
+    [SerializeField]
+    private Image _hotBar;
     [SerializeField]
     private float _delayBeforeStart = 1.3f;
+
     
 
     private void Awake()
     {
+        _hotBar.fillAmount = 1;
+        _ballLife = FindObjectOfType<BallLife>();
         _cameraMove = FindObjectOfType<CameraMoveControl>();
         IsWinGame = false;
         IsLoseGame = false;
@@ -50,6 +57,10 @@ public class CanvasManager : MonoBehaviour
             _inGameUI.SetActive(false);
             _lostUI.SetActive(true);
         }
+    }
+    private void FixedUpdate()
+    {
+        _hotBar.fillAmount = Mathf.LerpUnclamped(_hotBar.fillAmount,_ballLife.GetTemperature(),0.1f);
     }
     private IEnumerator StartGame()
     {

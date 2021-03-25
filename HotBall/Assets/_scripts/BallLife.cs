@@ -49,8 +49,14 @@ public class BallLife : MonoBehaviour
     {
         Liquid liquid = other.GetComponent<Liquid>();
 
-        if (liquid != null)
-        {            
+        if (liquid != null && liquid.tag== "Lava")
+        {
+            //Debug.Log(1);
+            TemperatureRegulator(liquid.PercentageOfThermalInFluence);
+            liquid.Evaporation();
+        }
+        else if (liquid != null)
+        {
             _liquidsList.Add(liquid);
         }
 
@@ -60,16 +66,16 @@ public class BallLife : MonoBehaviour
             CanvasManager.IsWinGame = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Liquid liquid = collision.collider.GetComponent<Liquid>();
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Liquid liquid = collision.collider.GetComponent<Liquid>();
 
-        if (liquid != null)
-        {
-            TemperatureRegulator(_liquidsList[0].PercentageOfThermalInFluence);
-            liquid.Evaporation();
-        }
-    }
+    //    if (liquid != null)
+    //    {
+    //        TemperatureRegulator(_liquidsList[0].PercentageOfThermalInFluence);
+    //        liquid.Evaporation();
+    //    }
+    //}
     private void OnTriggerExit2D(Collider2D other)
     {
         Liquid liquid = other.GetComponent<Liquid>();
@@ -92,7 +98,7 @@ public class BallLife : MonoBehaviour
         }
 
         _mainMaterial.color = _colorHot + (_differenceColor / 100) * ((_timeToCoolDown - _timerToCoolDown) / _timeToCoolDown * 100);
-        _light.range = (_timerToCoolDown / _timeToCoolDown);
+        _light.range = GetTemperature();
     }
     private void TemperatureRegulator(float percentageOfThermalInFluence)
     {
@@ -102,5 +108,9 @@ public class BallLife : MonoBehaviour
         {
             _timerToCoolDown = _timeToCoolDown;
         }
+    }
+    public float GetTemperature()
+    {
+        return (_timerToCoolDown / _timeToCoolDown);
     }
 }

@@ -9,6 +9,8 @@ public class BallMove : MonoBehaviour
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
     [SerializeField]
     private RuntimeCircleScorcher _runtimeCircle;
+    [SerializeField]
+    private CircleCollider2D _colliderMain;
 
     [SerializeField]
     private float _speed, _limmitHorizontal = 6;
@@ -135,6 +137,10 @@ public class BallMove : MonoBehaviour
         Gizmos.DrawLine(transform.position - new Vector3(_limmitHorizontal, 0, 0), transform.position + new Vector3(_limmitHorizontal, 0, 0));
     }
 
+    public float GetRadius()
+    {
+        return _colliderMain.radius;
+    }
     public Vector2 GetDirectionMove()
     {
         return _direction;

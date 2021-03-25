@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runtimeCircle: {fileID: 2002574611973076319}
+  _colliderMain: {fileID: 2002574611973076318}
   _speed: 0.07
   _limmitHorizontal: 5
 --- !u!114 &5808818654386227520
