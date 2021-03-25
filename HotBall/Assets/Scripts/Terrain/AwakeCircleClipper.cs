@@ -54,7 +54,7 @@ public class AwakeCircleClipper : MonoBehaviour, IClip
     void Awake()
     {
         _radius = _diameter / 2f;
-        _collider2D.radius = _radius-0.2f;
+        _collider2D.radius = _radius;
     }
 
     void Start()

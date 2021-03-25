@@ -1001,8 +1001,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1674717512}
   - component: {fileID: 1674717511}
-  - component: {fileID: 1674717510}
   - component: {fileID: 1674717509}
+  - component: {fileID: 1674717510}
   m_Layer: 0
   m_Name: DestructableTerrain (1)
   m_TagString: Destructable
@@ -1130,8 +1130,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1830527980}
   - component: {fileID: 1830527979}
-  - component: {fileID: 1830527981}
   - component: {fileID: 1830527982}
+  - component: {fileID: 1830527981}
   m_Layer: 0
   m_Name: DestructableTerrain
   m_TagString: Destructable
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 50
+  SpeedPenalty: 89.2
 --- !u!4 &1935991603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069041214983387541, guid: 44715232547ff364aade1e0cb27c2b0a,
@@ -1289,8 +1289,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002574611973076318, guid: 46a27a931d4095444b4203486083b325,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Radius
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808818654386227520, guid: 46a27a931d4095444b4203486083b325,
+        type: 3}
+      propertyPath: _timeToCoolDown
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a27a931d4095444b4203486083b325, type: 3}
@@ -1378,7 +1383,7 @@ PrefabInstance:
     - target: {fileID: 4571378526193706768, guid: a10a71f5e5e05d34a97cc475c9d7433c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.28
+      value: 18.53
       objectReference: {fileID: 0}
     - target: {fileID: 4571378526193706768, guid: a10a71f5e5e05d34a97cc475c9d7433c,
         type: 3}
@@ -1444,6 +1449,11 @@ PrefabInstance:
     - target: {fileID: 4571378526193706771, guid: a10a71f5e5e05d34a97cc475c9d7433c,
         type: 3}
       propertyPath: _terrains.Array.data[0]
+      value: 
+      objectReference: {fileID: 1830527979}
+    - target: {fileID: 4571378526193706771, guid: a10a71f5e5e05d34a97cc475c9d7433c,
+        type: 3}
+      propertyPath: _terrain
       value: 
       objectReference: {fileID: 1830527979}
     m_RemovedComponents: []

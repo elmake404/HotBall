@@ -191,6 +191,10 @@ public class RuntimeCircleScorcher : MonoBehaviour, IClip
     {
         return vertices;
     }
+    public bool ContactDestructibleTerrain()
+    {
+        return _terrains.Count > 0;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

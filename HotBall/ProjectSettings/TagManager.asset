@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destructable
   - Hole
+  - Terrain
   layers:
   - Default
   - TransparentFX

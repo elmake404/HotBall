@@ -50,7 +50,7 @@ public class BallLife : MonoBehaviour
         Liquid liquid = other.GetComponent<Liquid>();
 
         if (liquid != null)
-        {
+        {            
             _liquidsList.Add(liquid);
         }
 

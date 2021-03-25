@@ -140,11 +140,9 @@ public class DestructibleBlock : MonoBehaviour
 
         mesh.Clear();
         mesh.vertices = vertices;
-        //mesh.normals = normals;
         mesh.uv = texCoords;
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
-        //mesh.MarkModified();
 
         UpdateColliders(edgesList);
     }
