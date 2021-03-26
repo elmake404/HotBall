@@ -7,8 +7,8 @@ public class BallMove : MonoBehaviour
     private Vector3 _direction = Vector3.down;
     private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down,_startPosBall;
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
-    [SerializeField]
-    private RuntimeCircleScorcher _runtimeCircle;
+    //[SerializeField]
+    //private RuntimeCircleScorcher _runtimeCircle;
     [SerializeField]
     private CircleCollider2D _colliderMain;
 
@@ -22,7 +22,7 @@ public class BallMove : MonoBehaviour
     }
     private void Update()
     {
-        if (Move()&&_runtimeCircle.ContactDestructibleTerrain())
+        if (Move())
         {
             if (TouchUtility.TouchCount > 0)
             {
