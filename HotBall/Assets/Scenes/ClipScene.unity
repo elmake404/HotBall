@@ -1298,7 +1298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 71.8
+  _speedPenalty: 49
+  _isDenseMetal: 1
+  _hole: {fileID: 0}
+  _destructibleTerrain: {fileID: 1674717511}
 --- !u!61 &1674717510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1345,7 +1348,7 @@ MonoBehaviour:
   _blockSize: 1
   _simplifyEpsilonPercent: 0
   _resolutionX: 10
-  _resolutionY: 28
+  _resolutionY: 1
   _depth: 1
 --- !u!4 &1674717512
 Transform:
@@ -1355,7 +1358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674717508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -40.9, z: 0}
+  m_LocalPosition: {x: -4.5, y: 23.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1627,7 +1630,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 69.9
+  _speedPenalty: 23.7
+  _isDenseMetal: 0
+  _hole: {fileID: 0}
+  _destructibleTerrain: {fileID: 0}
 --- !u!4 &1935991603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069041214983387541, guid: 44715232547ff364aade1e0cb27c2b0a,

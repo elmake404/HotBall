@@ -24,7 +24,7 @@ public class BallMove : MonoBehaviour
     {
         if (Move())
         {
-            if (TouchUtility.TouchCount > 0)
+            if (TouchUtility.TouchCount > 0& ControlBall())
             {
                 Touch touch = TouchUtility.GetTouch(0);
 
@@ -93,6 +93,8 @@ public class BallMove : MonoBehaviour
         if (materialCharacteristics != null)
         {
             _materialCharacteristics.Add(materialCharacteristics);
+            if (materialCharacteristics.IsDenseMetal())
+                materialCharacteristics.HoleCreation(transform.position) ;
         }
         if (collision.tag == "Hole")
         {
@@ -126,7 +128,15 @@ public class BallMove : MonoBehaviour
         }
         transform.position = PosCorrection;
     }
-
+    private bool ControlBall()
+    {
+        for (int i = 0; i < _materialCharacteristics.Count; i++)
+        {
+            if (_materialCharacteristics[i].IsDenseMetal())
+                return false;
+        }
+        return true;
+    }
     private bool Move()
     {
         return (CanvasManager.IsGameFlow && CanvasManager.IsStartGeme);

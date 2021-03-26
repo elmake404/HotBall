@@ -8,7 +8,8 @@ using int64 = System.Int64;
 public class DestructibleTerrain : MonoBehaviour
 {
     [SerializeField]
-    private Material _material;
+    private Material _material; public Material MaterialTerrail 
+    { get { return _material; } }
     [SerializeField]
     private BoxCollider2D _coliderMain;
     [SerializeField]
@@ -21,7 +22,7 @@ public class DestructibleTerrain : MonoBehaviour
     private float _percentageOfThermalInFluence;
     [SerializeField]
     [Range(0.5f, 1.0f)]
-    private float _blockSize;
+    private float _blockSize; public float BlockSize { get { return _blockSize; } }
 
     private int64 _blockSizeScaled;
 
@@ -35,10 +36,12 @@ public class DestructibleTerrain : MonoBehaviour
 
     [SerializeField]
     [Range(1, 100)]
-    private int _resolutionY = 10;
+    private int _resolutionY = 10; public int ResolutionY 
+    { get { return _resolutionY; } }
 
     [SerializeField]
-    private float _depth = 1.0f;
+    private float _depth = 1.0f;public float Depth 
+    { get { return _depth; } }
     private float _width, _height;
 
 
