@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Water Refract 1
   m_Shader: {fileID: 4800000, guid: b5fb7cbf5f5654dedaf7fe28e8302008, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
