@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour
     private BallLife _ballLife;
     [SerializeField]
     private Image _hotBar;
+
     [SerializeField]
     private float _delayBeforeStart = 1.3f;
 

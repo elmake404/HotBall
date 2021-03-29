@@ -1282,7 +1282,7 @@ GameObject:
   m_Layer: 0
   m_Name: DestructableTerrain (1)
   m_TagString: Destructable
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedPenalty: 49
   _isDenseMetal: 1
-  _hole: {fileID: 0}
+  _hole: {fileID: 2314961974405162141, guid: 400ed36150c61ce479f751c2d5132cf6, type: 3}
   _destructibleTerrain: {fileID: 1674717511}
 --- !u!61 &1674717510
 BoxCollider2D:
@@ -1345,11 +1345,11 @@ MonoBehaviour:
   _colorGizmo: {r: 0, g: 0, b: 1, a: 1}
   _thermalInfluence: 0
   _percentageOfThermalInFluence: 0
-  _blockSize: 1
+  _blockSize: 0.5
   _simplifyEpsilonPercent: 0
-  _resolutionX: 10
+  _resolutionX: 18
   _resolutionY: 1
-  _depth: 1
+  _depth: 5
 --- !u!4 &1674717512
 Transform:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674717508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 23.2, z: 0}
+  m_LocalPosition: {x: -4.5, y: 23.2, z: -2.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

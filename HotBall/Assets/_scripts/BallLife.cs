@@ -66,16 +66,16 @@ public class BallLife : MonoBehaviour
             CanvasManager.IsWinGame = true;
         }
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Liquid liquid = collision.collider.GetComponent<Liquid>();
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Liquid liquid = collision.collider.GetComponent<Liquid>();
 
-    //    if (liquid != null)
-    //    {
-    //        TemperatureRegulator(_liquidsList[0].PercentageOfThermalInFluence);
-    //        liquid.Evaporation();
-    //    }
-    //}
+        if (liquid != null)
+        {
+            TemperatureRegulator(_liquidsList[0].PercentageOfThermalInFluence);
+            liquid.Evaporation();
+        }
+    }
     private void OnTriggerExit2D(Collider2D other)
     {
         Liquid liquid = other.GetComponent<Liquid>();

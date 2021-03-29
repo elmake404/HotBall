@@ -5,10 +5,8 @@ using UnityEngine;
 public class BallMove : MonoBehaviour
 {
     private Vector3 _direction = Vector3.down;
-    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down,_startPosBall;
+    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down, _startPosBall;
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
-    //[SerializeField]
-    //private RuntimeCircleScorcher _runtimeCircle;
     [SerializeField]
     private CircleCollider2D _colliderMain;
 
@@ -24,7 +22,7 @@ public class BallMove : MonoBehaviour
     {
         if (Move())
         {
-            if (TouchUtility.TouchCount > 0& ControlBall())
+            if (TouchUtility.TouchCount > 0 && ControlBall())
             {
                 Touch touch = TouchUtility.GetTouch(0);
 
@@ -94,7 +92,7 @@ public class BallMove : MonoBehaviour
         {
             _materialCharacteristics.Add(materialCharacteristics);
             if (materialCharacteristics.IsDenseMetal())
-                materialCharacteristics.HoleCreation(transform.position) ;
+                materialCharacteristics.HoleCreation(transform.position);
         }
         if (collision.tag == "Hole")
         {
@@ -118,7 +116,7 @@ public class BallMove : MonoBehaviour
     {
         Vector3 PosCorrection = transform.position;
 
-        if (PosCorrection.x >_startPosBall.x+_limmitHorizontal)
+        if (PosCorrection.x > _startPosBall.x + _limmitHorizontal)
         {
             PosCorrection.x = _startPosBall.x + _limmitHorizontal;
         }
