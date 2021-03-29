@@ -152,7 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 75
+  _speedPenalty: 0
+  _isDenseMetal: 0
+  _hole: {fileID: 0}
+  _destructibleTerrain: {fileID: 0}
 --- !u!61 &68738751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -822,6 +825,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &987033636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1933434499856609994, guid: 47462337e9d6b2a4e8a6c4b971fb77ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1965695030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1089010249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1248,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1946589536322386904, guid: 0a5977a41716af548a57df5683b8ff56,
+        type: 3}
+      propertyPath: _finish
+      value: 
+      objectReference: {fileID: 987033636}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5977a41716af548a57df5683b8ff56, type: 3}
 --- !u!1 &1663994532
@@ -1364,7 +1378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 75
+  _speedPenalty: 0
+  _isDenseMetal: 0
+  _hole: {fileID: 0}
+  _destructibleTerrain: {fileID: 0}
 --- !u!61 &1674717510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1956,7 +1973,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPenalty: 50
+  _speedPenalty: 0
+  _isDenseMetal: 0
+  _hole: {fileID: 0}
+  _destructibleTerrain: {fileID: 0}
 --- !u!1001 &1965695030
 PrefabInstance:
   m_ObjectHideFlags: 0
