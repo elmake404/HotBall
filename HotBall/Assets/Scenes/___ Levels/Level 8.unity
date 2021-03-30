@@ -201,7 +201,7 @@ MonoBehaviour:
   _percentageOfThermalInFluence: -0.25
   _blockSize: 0.5
   _simplifyEpsilonPercent: 0
-  _resolutionX: 6
+  _resolutionX: 4
   _resolutionY: 1
   _depth: 1
 --- !u!4 &93710751
@@ -212,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93710747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.74, y: 15.51, z: -0.4}
+  m_LocalPosition: {x: -1.06, y: 18.09, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -621,7 +621,7 @@ MonoBehaviour:
   _blockSize: 1
   _simplifyEpsilonPercent: 0
   _resolutionX: 6
-  _resolutionY: 5
+  _resolutionY: 4
   _depth: 0.5
 --- !u!4 &225547378
 Transform:
@@ -631,108 +631,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225547374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 15.01, z: -0.25}
+  m_LocalPosition: {x: -3, y: 16.44, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &297455274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 297455278}
-  - component: {fileID: 297455277}
-  - component: {fileID: 297455276}
-  - component: {fileID: 297455275}
-  m_Layer: 0
-  m_Name: Ice 1 (5)
-  m_TagString: Destructable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &297455275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297455274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedPenalty: 75
-  _isDenseMetal: 0
-  _hole: {fileID: 0}
-  _destructibleTerrain: {fileID: 0}
---- !u!61 &297455276
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297455274}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &297455277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297455274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2503e1f831c7a409982651d077de68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: a8254bf6d4832974fa1eb9ca234b6f38, type: 2}
-  _coliderMain: {fileID: 297455276}
-  _colorGizmo: {r: 0, g: 0, b: 1, a: 1}
-  _thermalInfluence: 1
-  _percentageOfThermalInFluence: -0.25
-  _blockSize: 0.5
-  _simplifyEpsilonPercent: 0
-  _resolutionX: 6
-  _resolutionY: 1
-  _depth: 1
---- !u!4 &297455278
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297455274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29, y: 18.97, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430850847
 GameObject:
@@ -1780,7 +1683,7 @@ PrefabInstance:
     - target: {fileID: 1933434499856609994, guid: 47462337e9d6b2a4e8a6c4b971fb77ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.63
+      value: 14.02
       objectReference: {fileID: 0}
     - target: {fileID: 1933434499856609994, guid: 47462337e9d6b2a4e8a6c4b971fb77ad,
         type: 3}
