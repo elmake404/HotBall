@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             transform.parent.GetComponent<CanvasManager>().BeginningGame();
+            FacebookManager.Instance.LevelStart(PlayerPrefs.GetInt("Level"));
+
             CanvasManager.IsStartGeme = true;
             gameObject.SetActive(false);
         }

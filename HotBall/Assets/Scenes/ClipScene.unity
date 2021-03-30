@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fc230c1122d7a4889939817778061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedPenalty: 23.7
+  _speedPenalty: 20
   _isDenseMetal: 0
   _hole: {fileID: 0}
   _destructibleTerrain: {fileID: 0}
@@ -1706,6 +1706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808818654386227520, guid: 46a27a931d4095444b4203486083b325,
+        type: 3}
+      propertyPath: _timeToCoolDown
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a27a931d4095444b4203486083b325, type: 3}

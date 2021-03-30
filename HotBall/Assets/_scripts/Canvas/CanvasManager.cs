@@ -50,10 +50,12 @@ public class CanvasManager : MonoBehaviour
     {
         if (!IsStartGeme)
         {
+            FacebookManager.Instance.GameStart();
             _menuUI.SetActive(true);
         }
         else
         {
+            FacebookManager.Instance.LevelStart(PlayerPrefs.GetInt("Level"));
             BeginningGame();
         }
     }
@@ -67,8 +69,10 @@ public class CanvasManager : MonoBehaviour
         }
         if (!_wimIU.activeSelf && IsWinGame)
         {
+
             _inGameUI.SetActive(false);
             _wimIU.SetActive(true);
+            FacebookManager.Instance.LevelWin(PlayerPrefs.GetInt("Level"));
             PlayerPrefs.SetInt("Scenes", PlayerPrefs.GetInt("Scenes")+ 1);
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
 
@@ -77,6 +81,8 @@ public class CanvasManager : MonoBehaviour
         {
             _inGameUI.SetActive(false);
             _lostUI.SetActive(true);
+            FacebookManager.Instance.LevelFail(PlayerPrefs.GetInt("Level"));
+
         }
     }
     private void FixedUpdate()

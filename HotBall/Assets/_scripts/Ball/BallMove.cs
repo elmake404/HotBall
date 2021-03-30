@@ -5,10 +5,12 @@ using UnityEngine;
 public class BallMove : MonoBehaviour
 {
     private Vector3 _direction = Vector3.down;
-    private Vector3 _startTouchPos, _currentTouchPos, _directionCurrent = Vector3.down, _startPosBall;
+    private Vector3 _startTouchPos, _startPosBall;
+    private Vector3 _currentPosBall, _targetPosBall;
     private List<MaterialCharacteristics> _materialCharacteristics = new List<MaterialCharacteristics>();
     [SerializeField]
     private CircleCollider2D _colliderMain;
+    private Camera _cam;
 
     [SerializeField]
     private float _speed, _limmitHorizontal = 6;
@@ -16,6 +18,8 @@ public class BallMove : MonoBehaviour
 
     void Start()
     {
+        _targetPosBall = transform.position;
+        _cam = Camera.main;
         _startPosBall = transform.position;
     }
     private void Update()
@@ -28,28 +32,28 @@ public class BallMove : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    _startTouchPos = touch.position;
+                    Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+                    _currentPosBall = transform.position;
+                    _startTouchPos = (_cam.transform.position - ((ray.direction) *
+                            ((_cam.transform.position - transform.position).z / ray.direction.z)));
                 }
                 else if (touch.phase == TouchPhase.Moved)
-                {
+                { 
+                    Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+
                     if (_startTouchPos == Vector3.zero)
                     {
-                        _startTouchPos = touch.position;
+                        _startTouchPos = (_cam.transform.position - ((ray.direction) *
+                                ((_cam.transform.position - transform.position).z / ray.direction.z)));
                     }
 
-                    _currentTouchPos = touch.position;
-
-                    _directionCurrent.x = (_currentTouchPos - _startTouchPos).x / 40;
-                    if (Mathf.Abs(_directionCurrent.x) > 1)
-                    {
-                        int diferens = _directionCurrent.x > 0 ? 1 : -1;
-                        _directionCurrent.x = 1 * diferens;
-                    }
+                    _targetPosBall = _currentPosBall + ((_cam.transform.position - ((ray.direction) *
+                        ((_cam.transform.position - transform.position).z / ray.direction.z))) - _startTouchPos);
                 }
             }
             else
             {
-                _directionCurrent = Vector3.down;
+                _targetPosBall = transform.position;
             }
         }
 
@@ -59,12 +63,12 @@ public class BallMove : MonoBehaviour
     {
         if (Move())
         {
-            if (_direction != _directionCurrent)
-            {
-                _direction = Vector3.Slerp(_direction, _directionCurrent, 0.5f);
-            }
-
             transform.Translate(_direction * (_speed - SpeedPenalty()));
+
+            Vector3 PosX = transform.position;
+            PosX.x = _targetPosBall.x;
+            transform.position = Vector3.MoveTowards(transform.position, PosX, (_speed - SpeedPenalty()));
+
             CorrectionPosition();
         }
     }
@@ -144,14 +148,11 @@ public class BallMove : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position - new Vector3(_limmitHorizontal, 0, 0), transform.position + new Vector3(_limmitHorizontal, 0, 0));
     }
-
-    public float GetRadius()
-    {
-        return _colliderMain.radius;
-    }
+    public float GetRadius() => _colliderMain.radius;
     public Vector2 GetDirectionMove()
     {
-        return _direction;
+        Vector3 direction = (_targetPosBall - transform.position).normalized; 
+        return new Vector3(direction.x,_direction.y,0).normalized;
     }
 
 }
